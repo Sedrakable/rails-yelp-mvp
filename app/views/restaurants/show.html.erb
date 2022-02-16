@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h2>
+    <strong>Name:</strong>
+    <%= @restaurant.name %>
+  </h2>
+
+  <h3>
+    <strong>Category:</strong>
+    <%= @restaurant.category %>
+  </h3>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @restaurant.address %>
+    <strong>Number:</strong>
+    <%= @restaurant.phone_number %>
+  </p>
+
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+  <%= link_to 'Back', restaurants_path %> |
+  <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="bg-primary bg-opacity-10">Content</th>
+        <th class="bg-primary bg-opacity-10">Rating</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @restaurant.reviews.each do |review| %>
+          <tr class="p-2 border-bottom">
+            <td class="p-2 border-end"><%= review.content  %></td>
+            <td class="p-2 border-end"><%= review.rating  %></td>
+            <!--td class="p-2"><%= link_to 'Delete', restaurant_review_path(review), method: :delete, data: { confirm: "Wait what?" } %></td-->
+          </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
